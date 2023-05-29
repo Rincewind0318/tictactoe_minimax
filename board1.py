@@ -10,6 +10,8 @@ computer_letter = None
 PLAYER_X = 'X'
 PLAYER_O = 'O'
 
+players_list =[PLAYER_X, PLAYER_O]
+
 WINNING_COMBINATIONS = [
     (1, 2, 3), (4, 5, 6), (7, 8, 9),  # Rows
     (1, 4, 7), (2, 5, 8), (3, 6, 9),  # Columns
@@ -122,11 +124,14 @@ def start():
 
     while user_input_letter != PLAYER_X and user_input_letter != PLAYER_O:
         user_input_letter = input("Choose 'X' or 'O'").upper()
-    if user_input_letter == PLAYER_X:
-        computer_letter = PLAYER_O
+        random.shuffle(players_list)
+        print(players_list)
+    if user_input_letter == players_list[0]:
+        print("You make a first move")
+        computer_letter = players_list[1]
         player_moves_first()
     else:
-        computer_letter = PLAYER_X
+        computer_letter = players_list[0]
         computer_move_first()
 
 
